@@ -88,6 +88,11 @@
       .rating-fail {
         color: #ef4444;
       }
+
+      .token-name {
+        color: #6366f1;
+        font-weight: 500;
+      }
     </style>
   </head>
   <body class="min-h-screen p-8">
@@ -182,8 +187,8 @@
             <div class="color-info">
               <div class="color-name">${pair.name}</div>
               <div class="color-values">
-                bg: hsl(${colors.bg})<br />
-                fg: hsl(${colors.fg})
+                bg: hsl(${colors.bg}) <span class="token-name">${colors.bgToken}</span><br />
+                fg: hsl(${colors.fg}) <span class="token-name">${colors.fgToken}</span>
               </div>
               <div class="preview-text" style="background: hsl(${colors.bg}); color: hsl(${colors.fg})">
                 The quick brown fox jumps over the lazy dog
