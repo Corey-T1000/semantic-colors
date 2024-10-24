@@ -1,0 +1,208 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Base Color Tokens */
+    --stone-025: 300 6% 97%;
+    --stone-100: 270 7% 95%;
+    --stone-200: 276 5% 78%;
+    --stone-300: 283 4% 66%;
+    --stone-400: 278 5% 47%;
+    --stone-500: 280 6% 39%;
+    --stone-600: 279 9% 31%;
+    --stone-700: 279 11% 24%;
+    --stone-800: 276 18% 16%;
+    --stone-850: 276 27% 11%;
+    --stone-900: 283 35% 8%;
+    --stone-950: 280 47% 4%;
+    --stone-975: 280 47% 4%;
+
+    --red-025: 0 100% 98%;
+    --red-100: 357 100% 96%;
+    --red-200: 359 100% 92%;
+    --red-300: 357 100% 85%;
+    --red-400: 355 91% 74%;
+    --red-500: 351 84% 64%;
+    --red-600: 351 55% 53%;
+    --red-700: 352 47% 44%;
+    --red-800: 352 45% 35%;
+    --red-850: 354 42% 26%;
+    --red-900: 355 37% 17%;
+    --red-950: 356 31% 11%;
+    --red-975: 355 33% 8%;
+
+    --sand-025: 28 89% 96%;
+    --sand-100: 32 100% 93%;
+    --sand-200: 31 100% 84%;
+    --sand-300: 28 100% 72%;
+    --sand-400: 25 65% 63%;
+    --sand-500: 22 44% 54%;
+    --sand-600: 20 36% 46%;
+    --sand-700: 18 34% 39%;
+    --sand-800: 16 32% 31%;
+    --sand-850: 13 30% 24%;
+    --sand-900: 14 28% 16%;
+    --sand-950: 24 32% 9%;
+    --sand-975: 20 35% 7%;
+
+    --teal-025: 158 36% 96%;
+    --teal-100: 174 29% 93%;
+    --teal-200: 174 28% 85%;
+    --teal-300: 175 28% 73%;
+    --teal-400: 176 29% 57%;
+    --teal-500: 177 28% 46%;
+    --teal-600: 177 26% 39%;
+    --teal-700: 177 25% 33%;
+    --teal-800: 176 24% 26%;
+    --teal-850: 177 22% 20%;
+    --teal-900: 175 19% 13%;
+    --teal-950: 158 19% 8%;
+    --teal-975: 163 24% 6%;
+
+    --violet-025: 253 82% 98%;
+    --violet-100: 252 88% 97%;
+    --violet-200: 255 85% 92%;
+    --violet-300: 256 81% 86%;
+    --violet-400: 255 79% 77%;
+    --violet-500: 253 76% 70%;
+    --violet-600: 253 73% 63%;
+    --violet-700: 252 72% 57%;
+    --violet-800: 255 58% 44%;
+    --violet-850: 259 56% 33%;
+    --violet-900: 263 50% 21%;
+    --violet-950: 265 42% 12%;
+    --violet-975: 272 40% 8%;
+
+    --magenta-025: 320 43% 97%;
+    --magenta-100: 318 42% 95%;
+    --magenta-200: 321 43% 90%;
+    --magenta-300: 320 42% 81%;
+    --magenta-400: 318 41% 70%;
+    --magenta-500: 317 40% 60%;
+    --magenta-600: 316 39% 51%;
+    --magenta-700: 314 54% 42%;
+    --magenta-800: 315 50% 33%;
+    --magenta-850: 315 46% 25%;
+    --magenta-900: 318 40% 17%;
+    --magenta-950: 318 32% 10%;
+    --magenta-975: 315 32% 7%;
+
+    /* Semantic Tokens */
+    --background: var(--stone-025);
+    --foreground: var(--stone-975);
+
+    --card: var(--stone-025);
+    --card-foreground: var(--stone-975);
+
+    --popover: var(--stone-025);
+    --popover-foreground: var(--stone-975);
+
+    --primary: var(--stone-900);
+    --primary-foreground: var(--stone-025);
+
+    --secondary: var(--stone-200);
+    --secondary-foreground: var(--stone-975);
+
+    --muted: var(--stone-200);
+    --muted-foreground: var(--stone-800);
+
+    --accent: var(--stone-200);
+    --accent-foreground: var(--stone-975);
+
+    --success: var(--teal-200);
+    --success-foreground: var(--teal-800);
+
+    --warning: var(--sand-200);
+    --warning-foreground: var(--sand-800);
+
+    --error: var(--red-300);
+    --error-foreground: var(--red-800);
+
+    --creative: var(--violet-300);
+    --creative-foreground: var(--violet-800);
+
+    --destructive: var(--stone-975);
+    --destructive-foreground: var(--stone-025);
+
+    --border: var(--stone-200);
+    --input: var(--stone-200);
+    --ring: var(--stone-975);
+
+    /* Radius */
+    --radius: 0.5rem;
+    --radius-sm: 0.3rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.8rem;
+    --radius-full: 9999px;
+
+    /* Chart Colors */
+    --chart-1: var(--red-300);
+    --chart-2: var(--sand-300);
+    --chart-3: var(--teal-300);
+    --chart-4: var(--violet-300);
+    --chart-5: var(--magenta-300);
+    --chart-6: var(--red-500);
+    --chart-7: var(--sand-500);
+    --chart-8: var(--teal-500);
+    --chart-9: var(--violet-500);
+    --chart-10: var(--magenta-500);
+    --chart-11: var(--red-700);
+    --chart-12: var(--sand-700);
+    --chart-13: var(--teal-700);
+    --chart-14: var(--violet-700);
+    --chart-15: var(--magenta-700);
+  }
+
+  .dark {
+    --background: var(--stone-975);
+    --foreground: var(--stone-025);
+
+    --card: var(--stone-975);
+    --card-foreground: var(--stone-025);
+
+    --popover: var(--stone-975);
+    --popover-foreground: var(--stone-025);
+
+    --primary: var(--stone-025);
+    --primary-foreground: var(--stone-975);
+
+    --secondary: var(--stone-800);
+    --secondary-foreground: var(--stone-025);
+
+    --muted: var(--stone-800);
+    --muted-foreground: var(--stone-300);
+
+    --accent: var(--stone-800);
+    --accent-foreground: var(--stone-200);
+
+    --success: var(--teal-900);
+    --success-foreground: var(--teal-200);
+
+    --warning: var(--sand-900);
+    --warning-foreground: var(--sand-200);
+
+    --error: var(--red-900);
+    --error-foreground: var(--red-200);
+
+    --creative: var(--violet-900);
+    --creative-foreground: var(--violet-200);
+
+    --destructive: var(--stone-025);
+    --destructive-foreground: var(--stone-975);
+
+    --border: var(--stone-800);
+    --input: var(--stone-800);
+    --ring: var(--stone-025);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}

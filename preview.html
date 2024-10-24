@@ -1,0 +1,258 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Semantic Colors Preview</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles/globals.css" />
+    <style>
+      .color-pair {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 1.5rem;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        border: 1px solid rgba(128, 128, 128, 0.2);
+      }
+
+      .color-swatches {
+        display: flex;
+        gap: 0.5rem;
+      }
+
+      .color-swatch {
+        width: 3rem;
+        height: 3rem;
+        border-radius: 0.25rem;
+        border: 1px solid rgba(128, 128, 128, 0.2);
+      }
+
+      .color-info {
+        margin-left: 1.5rem;
+        flex: 1;
+      }
+
+      .color-name {
+        font-family: monospace;
+        font-size: 0.875rem;
+        margin-bottom: 0.25rem;
+      }
+
+      .color-values {
+        font-family: monospace;
+        font-size: 0.75rem;
+        color: rgba(128, 128, 128, 0.8);
+        margin-bottom: 0.5rem;
+      }
+
+      .preview-text {
+        padding: 0.5rem 1rem;
+        border-radius: 0.25rem;
+        margin: 0.5rem 0;
+        font-size: 0.875rem;
+      }
+
+      .contrast-info {
+        font-family: monospace;
+        font-size: 0.875rem;
+        font-weight: 500;
+      }
+
+      .mode-section {
+        padding: 2rem;
+        margin-bottom: 2rem;
+        border-radius: 0.5rem;
+      }
+
+      .light-mode {
+        background: hsl(300 6% 97%);
+      }
+
+      .dark-mode {
+        background: hsl(280 47% 4%);
+        color: hsl(300 6% 97%);
+      }
+
+      .rating-aaa {
+        color: #22c55e;
+      }
+
+      .rating-aa {
+        color: #3b82f6;
+      }
+
+      .rating-aa-large {
+        color: #f59e0b;
+      }
+
+      .rating-fail {
+        color: #ef4444;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen p-8">
+    <div class="max-w-[800px] mx-auto">
+      <div class="mode-section light-mode">
+        <h2 class="text-sm font-mono mb-6">light</h2>
+        <div class="color-pairs">
+          <!-- Color pairs will be dynamically generated -->
+        </div>
+      </div>
+
+      <div class="mode-section dark-mode">
+        <h2 class="text-sm font-mono mb-6">dark</h2>
+        <div class="color-pairs">
+          <!-- Color pairs will be dynamically generated -->
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const colorPairs = [
+        {
+          name: 'background + foreground',
+          light: { bg: '300 6 97', fg: '280 47 4', bgToken: 'stone-025', fgToken: 'stone-975' },
+          dark: { bg: '280 47 4', fg: '300 6 97', bgToken: 'stone-975', fgToken: 'stone-025' }
+        },
+        {
+          name: 'card + card-foreground',
+          light: { bg: '300 6 97', fg: '280 47 4', bgToken: 'stone-025', fgToken: 'stone-975' },
+          dark: { bg: '280 47 4', fg: '300 6 97', bgToken: 'stone-975', fgToken: 'stone-025' }
+        },
+        {
+          name: 'popover + popover-foreground',
+          light: { bg: '300 6 97', fg: '280 47 4', bgToken: 'stone-025', fgToken: 'stone-975' },
+          dark: { bg: '280 47 4', fg: '300 6 97', bgToken: 'stone-975', fgToken: 'stone-025' }
+        },
+        {
+          name: 'primary + primary-foreground',
+          light: { bg: '283 35 8', fg: '300 6 97', bgToken: 'stone-900', fgToken: 'stone-025' },
+          dark: { bg: '300 6 97', fg: '280 47 4', bgToken: 'stone-025', fgToken: 'stone-975' }
+        },
+        {
+          name: 'secondary + secondary-foreground',
+          light: { bg: '276 5 78', fg: '280 47 4', bgToken: 'stone-200', fgToken: 'stone-975' },
+          dark: { bg: '276 18 16', fg: '300 6 97', bgToken: 'stone-800', fgToken: 'stone-025' }
+        },
+        {
+          name: 'muted + muted-foreground',
+          light: { bg: '276 5 78', fg: '276 18 16', bgToken: 'stone-200', fgToken: 'stone-800' },
+          dark: { bg: '276 18 16', fg: '283 4 66', bgToken: 'stone-800', fgToken: 'stone-300' }
+        },
+        {
+          name: 'accent + accent-foreground',
+          light: { bg: '276 5 78', fg: '280 47 4', bgToken: 'stone-200', fgToken: 'stone-975' },
+          dark: { bg: '276 18 16', fg: '270 7 95', bgToken: 'stone-800', fgToken: 'stone-200' }
+        },
+        {
+          name: 'success + success-foreground',
+          light: { bg: '174 28 85', fg: '176 24 26', bgToken: 'teal-200', fgToken: 'teal-800' },
+          dark: { bg: '175 19 13', fg: '174 28 85', bgToken: 'teal-900', fgToken: 'teal-200' }
+        },
+        {
+          name: 'warning + warning-foreground',
+          light: { bg: '31 100 84', fg: '16 32 31', bgToken: 'sand-200', fgToken: 'sand-800' },
+          dark: { bg: '14 28 16', fg: '31 100 84', bgToken: 'sand-900', fgToken: 'sand-200' }
+        },
+        {
+          name: 'error + error-foreground',
+          light: { bg: '357 100 85', fg: '352 45 35', bgToken: 'red-300', fgToken: 'red-800' },
+          dark: { bg: '355 37 17', fg: '359 100 92', bgToken: 'red-900', fgToken: 'red-200' }
+        },
+        {
+          name: 'creative + creative-foreground',
+          light: { bg: '256 81 86', fg: '255 58 44', bgToken: 'violet-300', fgToken: 'violet-800' },
+          dark: { bg: '263 50 21', fg: '255 85 92', bgToken: 'violet-900', fgToken: 'violet-200' }
+        },
+        {
+          name: 'destructive + destructive-foreground',
+          light: { bg: '280 47 4', fg: '300 6 97', bgToken: 'stone-975', fgToken: 'stone-025' },
+          dark: { bg: '300 6 97', fg: '280 47 4', bgToken: 'stone-025', fgToken: 'stone-975' }
+        }
+      ];
+
+      function createColorPair(pair, mode) {
+        const colors = mode === 'light' ? pair.light : pair.dark;
+        return `
+          <div class="color-pair" data-bg="${colors.bg}" data-fg="${colors.fg}">
+            <div class="color-swatches">
+              <div class="color-swatch" style="background: hsl(${colors.bg})"></div>
+              <div class="color-swatch" style="background: hsl(${colors.fg})"></div>
+            </div>
+            <div class="color-info">
+              <div class="color-name">${pair.name}</div>
+              <div class="color-values">
+                bg: hsl(${colors.bg})<br />
+                fg: hsl(${colors.fg})
+              </div>
+              <div class="preview-text" style="background: hsl(${colors.bg}); color: hsl(${colors.fg})">
+                The quick brown fox jumps over the lazy dog
+              </div>
+              <div class="contrast-info"></div>
+            </div>
+          </div>
+        `;
+      }
+
+      window.onload = function () {
+        const lightPairs = document.querySelector('.light-mode .color-pairs');
+        const darkPairs = document.querySelector('.dark-mode .color-pairs');
+
+        colorPairs.forEach(pair => {
+          lightPairs.innerHTML += createColorPair(pair, 'light');
+          darkPairs.innerHTML += createColorPair(pair, 'dark');
+        });
+
+        document.querySelectorAll('.color-pair').forEach((pair) => {
+          const bg = pair.getAttribute('data-bg').split(' ').map(Number);
+          const fg = pair.getAttribute('data-fg').split(' ').map(Number);
+
+          const bgRgb = hslToRgb(...bg);
+          const fgRgb = hslToRgb(...fg);
+
+          const bgLum = getLuminance(...bgRgb);
+          const fgLum = getLuminance(...fgRgb);
+
+          const ratio = getContrastRatio(bgLum, fgLum);
+          const rating = getContrastRating(ratio);
+
+          const ratingEl = pair.querySelector('.contrast-info');
+          if (ratingEl) {
+            ratingEl.innerHTML = `<span class="rating-${rating.toLowerCase().replace(' ', '-')}">${ratio.toFixed(2)}:1 (${rating})</span>`;
+          }
+        });
+      };
+
+      function hslToRgb(h, s, l) {
+        s /= 100;
+        l /= 100;
+        const k = (n) => (n + h / 30) % 12;
+        const a = s * Math.min(l, 1 - l);
+        const f = (n) => l - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1)));
+        return [255 * f(0), 255 * f(8), 255 * f(4)].map(Math.round);
+      }
+
+      function getLuminance(r, g, b) {
+        const [rs, gs, bs] = [r, g, b].map((v) => {
+          v /= 255;
+          return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+        });
+        return rs * 0.2126 + gs * 0.7152 + bs * 0.0722;
+      }
+
+      function getContrastRatio(l1, l2) {
+        const lighter = Math.max(l1, l2);
+        const darker = Math.min(l1, l2);
+        return (lighter + 0.05) / (darker + 0.05);
+      }
+
+      function getContrastRating(ratio) {
+        if (ratio >= 7) return 'AAA';
+        if (ratio >= 4.5) return 'AA';
+        if (ratio >= 3) return 'AA Large';
+        return 'Fail';
+      }
+    </script>
+  </body>
+</html>

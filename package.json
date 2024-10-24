@@ -1,0 +1,23 @@
+{
+  "name": "semantic-colors",
+  "version": "1.0.0",
+  "description": "A comprehensive semantic color system with WCAG compliance",
+  "main": "styles/globals.css",
+  "scripts": {
+    "preview": "open preview.html"
+  },
+  "keywords": [
+    "colors",
+    "design-system",
+    "accessibility",
+    "wcag",
+    "dark-mode",
+    "tailwindcss",
+    "css"
+  ],
+  "author": "",
+  "license": "MIT",
+  "peerDependencies": {
+    "tailwindcss": ">=3.0.0"
+  }
+}
